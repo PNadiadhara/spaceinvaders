@@ -249,7 +249,24 @@ def main():
                 enemies.remove(enemy)
 
         player.move_lasers(-laser_velocity, enemies)
+
+def main_menu():
+    title_font = pygame.font.SysFont("comicsans", 70)
+    run = True
+    while run:
+        WINDOW.blit(BACKGROUND, (0,0))
+        title_label = title_font.render("Press any key to begin...", 1, (255,255,255))
+        WINDOW.blit(title_label, (WIDTH/2 - title_label.get_width()/2, 350)) 
+
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+            if event.type == pygame.KEYDOWN: 
+                main()
+
+    pygame.quit()
         
         
-main()
+main_menu()
 
